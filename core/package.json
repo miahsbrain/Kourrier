@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "scripts": {
+
+    "tw-watch": "tailwindcss -i ./templates/input.css -o ./static/css/output.css --watch",
+
+    "tw-build": "tailwindcss -i ./templates/input.css -o ./static/css/output.css --minify"
+  }
+}
