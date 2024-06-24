@@ -24,28 +24,39 @@
 </head>
 
 <body class="font-sora min-h-screen">
-    <nav class="max-w-7xl bg-white flex justify-between m-3 mx-auto items-baseline">
-        <div>
+    <nav class="max-w-7xl h-fit bg-white flex justify-between m-3 mx-auto items-center">
+        <div class="flex items-center">
             <a href="/" class="font-bold text-2xl font-arvo">KOURRIER</a>
         </div>
+        {% if not request.user.is_authenticated %}
         <div class="nav-links">
-            <ul class="flex gap-6">
-                <li class="active relative">
-                    <a href="#" class="font-sora font-semibold">Customer</a>
+            <ul class="flex gap-6 items-center">
+                <li class="{% if request.GET.next == 'customer' %} active {% endif %} relative">
+                    <a href="/signin/?next=customer" class="font-sora font-semibold">Customer</a>
                 </li>
-                <li class="relative">
-                    <a href="#" class="font-sora font-semibold">Courier</a>
+                <li class="{% if request.GET.next == 'courier' %} active {% endif %}relative">
+                    <a href="/signin/?next=courier" class="font-sora font-semibold">Courier</a>
                 </li>
             </ul>
         </div>
         <div>
-            <div class="flex gap-2">
-                <button class="font-sora font-semibold py-2 px-4 bg-transparent text-black text-base">Sign In</button>
-                <button
+            <div class="flex gap-2 items-center">
+                <a href="/signin" class="font-sora font-semibold py-2 px-4 bg-transparent text-black text-base">Sign In</a>
+                <a href="/signup"
                     class="font-sora font-semibold py-2 px-4 bg-red-400 hover:bg-red-500 text-white rounded-full tracking-wide text-base">Sign
-                    Up</button>
+                    Up</a>
             </div>
         </div>
+        {% else %}
+        <div>
+            <div class="flex gap-4 items-center">
+                <h4 class="">{{ request.user.get_full_name | title }}</h4>
+                <a href="/signout"
+                    class="font-sora font-semibold py-2 px-4 border-2 shadow-sm border-red-400 hover:bg-red-400 hover:text-white rounded-full tracking-wide text-base">Sign
+                   Out</a>
+            </div>
+        </div>
+        {% endif %}
     </nav>
 
     {% block content %}{% endblock content %}

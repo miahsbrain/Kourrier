@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load customtags %}
+
+{% block content %}
+
+<div>
+    <div class="flex justify-center items-center mt-8">
+        <div class="w-80 border p-4 shadow-md">
+            <h4 class="uppercase text-center font-arvo font-semibold text-xl mt-4">
+                {% if request.GET.next != 'courier' %}
+                Customer
+                {% else %}
+                Courier
+                {% endif %}
+            </h4>
+            <div class="mt-4">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p class="mb-1">Email</p>
+                    {{ form.username | placeholder:'Email' }}
+                    <p>Password</p>
+                    {{ form.password | placeholder:'Password' }}
+                    <button class="bg-red-400 hover:bg-red-500 block w-full mt-4 py-2 rounded-md">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
