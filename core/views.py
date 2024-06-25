@@ -32,7 +32,7 @@ class Signup(View):
             user.username = email
             user.save()
 
-            login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return HttpResponseRedirect('/')
-        else:
+        else: 
             return render(request, 'signup.html', {'form': form})
