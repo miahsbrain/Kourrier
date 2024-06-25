@@ -27,6 +27,7 @@
                         <p>Password</p>
                         {{ form.password | placeholder:'Password' }}
                         <button class="bg-red-400 hover:bg-red-500 block w-full mt-4 py-2 rounded-md mb-4">Sign In</button>
+                        <p class="mt-4">New to Kourrier? <a class="font-semibold text-red-400 hover:text-red-500" href="/signup/?next={{ request.GET.next }}">Sign Up</a></p>
                     </div>
                 </div>
             </form>
