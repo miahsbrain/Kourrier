@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.ProfileMiddleware',
 ]
 
 ROOT_URLCONF = 'deliveryApp.urls'
@@ -121,15 +122,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = ''
 STATIC_URL = '/static/'
-STATIC_FILES_DIRS = [BASE_DIR / 'core/static', ]
+STATICFILES_DIRS = [BASE_DIR / 'core/static', ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = Path(BASE_DIR / 'media')
 
 LOGIN_URL = '/signin'
 LOGIN_REDIRECT_URL = '/'
 
+
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 SOCIAL_AUTH_FACEBOOK_KEY = '494891209641712'

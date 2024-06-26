@@ -7,7 +7,7 @@
     <div class="flex justify-center items-center mt-8">
         <div class="w-80 border p-4 shadow-md">
             <h4 class="uppercase text-center font-arvo font-semibold text-xl mt-4">
-                {% if request.GET.next != 'courier' %}
+                {% if request.GET.next != '/courier' %}
                 Customer
                 {% else %}
                 Courier
@@ -17,22 +17,10 @@
                 <form action="" method="post">
                     {% csrf_token %}
                     {{ form }}
-                    <!-- <p class="mb-1">First name</p>
-                    {{ form.first_name }}
-                    <p class="mb-1">Last name</p>
-                    {{ form.last_name }}
-                    <p class="mb-1">Email</p>
-                    {{ form.email }}
-                    <p>Password</p>
-                    {{ form.password1 }}
-                    {{ form.password1.help_text }}
-                    <p class="text-[.8rem] ml-2 mb-2">{{ form.password1.help_text | striptags }}</p>
-                    <p>Confirm password</p>
-                    {{ form.password2 }} -->
                     <button class="bg-red-400 hover:bg-red-500 block w-full mt-4 py-2 rounded-md">Sign Up</button>
-                    <p class="mt-4">Already have an account? <a class="font-semibold text-red-400 hover:text-red-500" href="/signin/?next={{ request.GET.next }}">Sign In</a></p>
+                    <p class="mt-4">Already have an account? <a class="font-semibold text-red-400 hover:text-red-500" href="/signin/?next=/{{ request.GET.next }}">Sign In</a></p>
                     <hr>
-                    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.GET.next }}" class="bg-blue-500 hover:bg-blue-600 block w-full mt-4 py-2 rounded-md mb-4 text-center">Sign in with Facebook</a>
+                    <a href="{% url 'social:begin' 'facebook' %}?next=/{{ request.GET.next }}" class="bg-blue-500 hover:bg-blue-600 block w-full mt-4 py-2 rounded-md mb-4 text-center">Sign in with Facebook</a>
                 </form>
             </div>
         </div>
